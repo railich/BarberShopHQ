@@ -17,6 +17,10 @@ before do
 end
 
 class Client < ActiveRecord::Base
+  validates :name, presence: true
+  validates :phone, presence: true
+  validates :datestamp, presence: true
+  validates :color, presence: true
 end
 
 class Barber < ActiveRecord::Base
@@ -28,15 +32,21 @@ get '/' do
 end
 
 get '/vizit' do
+  @c = Client.new
   erb :vizit
 end
 
 post '/vizit' do
 
-  c = Client.new params[:client]
-  c.save
+  @c = Client.new params[:client]
+  if @c.save
+    erb "<h2>Вы записаны!</h2>"
+  else
+    @errors = @c.errors.full_messages.first
+    erb :vizit
+  end
 
-  erb "Вы записаны!"
+
 end
 
 get '/showusers' do
