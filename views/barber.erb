@@ -1,0 +1,21 @@
+<h1>Парикмахер</h1>
+Имя: <i><%= @barber.name %></i> <br>
+
+<% if @barber_clients.length > 0 %>
+<br>
+Список кто записался к данному парикмахеру: <br>
+<br>
+<ol>
+  <% @barber_clients.each do |client| %>
+    <li>
+      Имя клиента: <strong><%= client.name %></strong> <br>
+      Телефон клиента: <i><%= client.phone %></i> <br>
+      Дата стрижки: <i><%= client.datestamp %></i> <br>
+      <br>
+    </li>
+  <% end %>
+</ol>
+
+<% else %>
+    <p>Никто не записался к данному парикмахеру.</p>
+<% end %>

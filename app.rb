@@ -53,3 +53,9 @@ get '/showusers' do
   @clients = Client.order('datestamp DESC')
   erb :showusers
 end
+
+get '/barber/:id' do
+  @barber = Barber.find(params[:id])
+  @barber_clients = Client.where(barber: params[:id])
+  erb :barber
+end
