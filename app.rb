@@ -32,24 +32,11 @@ get '/vizit' do
 end
 
 post '/vizit' do
-  @name = params[:name]
-  @phone = params[:phone]
-  @datestamp = params[:datetime]
-  @barber = params[:master]
-  @color = params[:head_color]
 
-  b = Client.new
-  b.name = @name
-  b.phone = @phone
-  b.datestamp = @datestamp
-  b.barber = @barber
-  b.color = @color
+  c = Client.new params[:client]
+  c.save
 
-  b.save
-
-  @message = "#{@name} вы записаны на #{@datestamp}, на стрижку к #{Barber.find(@barber).name}!"
-
-  erb :vizit
+  erb "Вы записаны!"
 end
 
 get '/showusers' do
