@@ -1,0 +1,9 @@
+<h2>Наш клиент</h2>
+<br>
+<strong><%= @client.name %></strong>
+<div class="info">
+  Записан на дату: <i><%= @client.datestamp %></i> <br>
+  Мастер: <i><%= @barber.name %></i> <br>
+  Телефон клиента: <i><%= @client.phone %></i> <br>
+  Краска для волос: <span style="background-color: <%= @client.color %>"><%= @client.color %></span>
+</div>

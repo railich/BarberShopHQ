@@ -59,3 +59,9 @@ get '/barber/:id' do
   @barber_clients = Client.where(barber: params[:id])
   erb :barber
 end
+
+get '/client/:id' do
+  @client = Client.find(params[:id])
+  @barber = Barber.find(@client.barber)
+  erb :client
+end
