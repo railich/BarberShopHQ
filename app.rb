@@ -51,3 +51,8 @@ post '/vizit' do
 
   erb :vizit
 end
+
+get '/showusers' do
+  @clients = Client.order('datestamp DESC')
+  erb :showusers
+end

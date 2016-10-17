@@ -1,0 +1,16 @@
+<h1>Записавшиеся на стрижку</h1>
+
+<ul>
+  <% @clients.each do |client| %>
+    <li key="<%= client.id %>">
+      <strong><%= client.name %></strong>
+      <div class="info">
+        на дату: <i><%= client.datestamp %></i> <br>
+        Мастер: <i><%= @barbers.find(client.barber).name %></i> <br>
+        тел.: <i><%= client.phone %></i> <br>
+        краска для волос: <span style="background-color: <%= client.color %>"><%= client.color %></span>
+      </div>
+      <br>
+    </li>
+  <% end %>
+</ul>
